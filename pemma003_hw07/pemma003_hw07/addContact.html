@@ -1,0 +1,143 @@
+﻿<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+     	<div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a href="#" onclick="location.href = '/'"><b>Home</b></a></li>
+          <li><a href="#" onclick="location.href = '/contacts'"><b>Contacts</b></a></li>
+          <li><a href="#" onclick="location.href = '/addContact'"><b>Add Contact</b></a></li>
+          <li><a href="#" onclick="location.href = '/stock'"><b>Stock Page</b></a></li>
+          <li><a href="#" onclick="location.href = '/api/logout'"><b>Logout</b></a></li>
+        </ul>
+    	</div>
+  	</nav>
+    <br><br>
+
+    <div class="container">
+      <div class="row">
+        <p><br /></p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <form id="formm" name="addContact" method="post" action = "/api/addContact">
+              <p></p>
+              <table class="table table-bordered table-hover">
+                <tbody>
+                  <tr>
+                    <td class="col-md-6">Name</td>
+                    <td class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="name" required>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-6">Category</td>
+                    <td class="col-md-6">
+                      <div class="form-group">
+                          <select class="form-control" name="category">
+                              <option>Personal</option>
+                              <option>Academic</option>
+                              <option>Industry</option>
+                          </select>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-6">Location</td>
+                    <td class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="location" required>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-6">Contact Information</td>
+                    <td class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="contact" required>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-6">Email</td>
+                    <td class="col-md-6">
+                      <div class="form-group">
+                        <input type="email" class="form-control" name="email" required>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-6">Website Name</td>
+                    <td class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="website_name" required maxlength="100">
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-6">Website URL</td>
+                    <td class="col-md-6">
+                      <div class="form-group">
+                        <input type="url" class="form-control" name="website_url" required maxlength="200">
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td class="col-md-6"></td>
+                      <td class="col-md-6">
+                          <input type="submit" value="Submit">
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+    <!-- <script>
+      $(document).ready(function () {
+        $('#formm').submit(function (event) {
+          event.preventDefault();
+          //collect the form data using Id Selector for whatever data you need
+          //to send to server
+          let nam = $('.name').val();
+          let cat = $('.category').val();
+          let loc = $('.location').val();
+          let con = $('.contact').val();
+          let em = $('.email').val();
+          let webname = $('.website_name').val();
+          let weburl = $('.website_url').val();
+          $.post('additcontact',
+          {"name":nam,"category":cat, "location":loc, "contact":con, "email":em, "website_name":webname, "website_url":weburl},
+          function(data){
+            console.log(data);
+            if(data.status==='success'){
+              //pseudocode
+              //Re-directtocontactspage,
+              window.location.href='contacts';
+            }
+            else {
+              //Displayerrormessage
+            }
+        });
+        });
+      });
+    </script> -->
+  </body>
+</html>

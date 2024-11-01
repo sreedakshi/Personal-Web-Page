@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset="UTF-8">
+		<title>My Contacts</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="script.js"></script>
+	</head>
+
+	<body>
+		<div class="navbar">
+			<table>
+				<tr>
+					<td><p><a href="myContacts.html">My Contacts</a></p></td>
+				</tr>
+				<tr>
+					<td><p><a href="formInput.html">Form Input</a></p></td>
+				</tr>
+				<tr>
+					<td><p><a href="myWidgets.html">My Widgets</a></p></td>
+				</tr>
+			</table>
+		</div>
+		<h1>My University Contacts</h1>
+		<div class = "row">
+			<div class = "column">
+				<table id="contactsTable">
+				  <tr class="diff">
+				    <th>Name</th>
+				    <th>Category</th>
+				    <th>Location</th> 
+				    <th>Contact Information</th>
+				    <th>Email</th>
+				    <th>Website</th>
+				  </tr>
+				  <tr>
+				    <td>Professor Gini</td>
+				    <td>Academic</td>
+				    <td>245 Shepherd Labs 100 Union Street SE Minneapolis, MN 55455</td>
+				    <td>Professor of Computer Science
+				    	<img id="thumb" src="gophers-mascot.png" alt="Goldy Gopher">
+				    <td>gini@umn.edu</td>
+				    <td><a href="https://www-users.cs.umn.edu/~gini/" target="_blank">Home Page</a></td>
+				  </tr>
+				  <tr class="diff">
+				    <td>Professor Kumar</td>
+				    <td>Academic</td>
+				    <td>5-225C Keller Hall
+						University of Minnesota
+						Minneapolis, MN 55455</td>
+				    <td>Professor of Computer Science
+				    	<img id="thumb1" src="gophers-mascot.png" alt="Goldy Gopher">
+				    <td>kumar001@umn.edu</td>
+				    <td><a href="https://www-users.cs.umn.edu/~kumar001/" target="_blank">Home Page</a></td>
+				  </tr>
+				  <tr>
+				    <td>Professor Kauffman</td>
+				    <td>Academic</td>
+				    <td>116 Church St SE, Minneapolis, MN 55455</td>
+				    <td>Professor of Computer Science
+				   		<img id="thumb2" src="gophers-mascot.png" alt="Goldy Gopher">
+				    <td>kauffman@umn.edu</td>
+				    <td><a href="https://www-users.cs.umn.edu/~kauffman/" target="_blank">Home Page</a></td>
+				  </tr>
+				  <tr class="diff">
+				    <td>President Joan T.A. Gabel</td>
+				    <td>Academic</td>
+				    <td>202 Morrill Hall 100 Church Street SE 
+				    Minneapolis, MN 55455</td>
+				    <td>President of the University of Minnesota System 
+				    	<img id="thumb3" src="gophers-mascot.png" alt="Goldy Gopher">
+				    <td>upres@umn.edu</td>
+				    <td><a href="https://president.umn.edu/" target="_blank">Home Page</a></td>
+				  </tr>
+				  <tr>
+				    <td>Professor Fazzini</td>
+				    <td>Academic</td>
+				    <td>6-189 Keller Hall 200 Union Street SE Minneapolis, MN 55455</td>
+				    <td>Professor of Computer Science
+				    	<img id="thumb4" src="gophers-mascot.png" alt="Goldy Gopher">
+				    <td>mfazzini@umn.edu</td>
+				    <td><a href="https://www-users.cs.umn.edu/~mfazzini/index.html" target="_blank">Home Page</a></td>
+				  </tr>
+				</table>
+			</div>
+			<div class= "column" id="buttonsimage">
+				<img id="image" src="gophers-mascot.png" alt="Goldy Gopher">
+				<input class="feelingLucky" type="button" value="Feeling Lucky" onclick="randomImg()"/>
+				<input id="dizzybutton" class="feelingDizzy" type="button" value="Feeling Dizzy" onclick="rotateImg()"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<div id="directionsPanel"></div>
+			</div>
+			<div class="specialcolumn" id="googleMap">
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4YZWe1IJEVYB8Xz6aZct-HnCcuhaHXi4&callback=initMap&libraries=places&v=weekly" async></script>
+			</div>
+			<div class="column" id="nearbyPlaces">
+						<img id="nearbyicon" src="nearby-icon-65.png" alt="Nearby Places Pic">
+						<br>
+						<label for="typeofplace" class="boldit">Find</label>
+						<select name="typeofplace" id="typeofplace" onclick="other()">
+						  <option value="restaurant">Restaurant</option>
+						  <option value="hospital">Hospital</option>
+						  <option value="parking">Parking</option>
+						  <option value="supermarket">Supermarket</option>
+						  <option value="other">Other</option>
+						</select>
+						<br><br>
+						<label for="radius" class="boldit">in</label>
+						<input type="text" id="radius" name="radius">
+						<label for="radius" class="boldit">meters</label>
+						<br><br>
+						<input type="text" id="keywords" name="keywords" placeholder="Enter Other Places" disabled>
+						<br>
+						<input type="button" value="Search" onclick="search(document.getElementById('typeofplace').value, document.getElementById('radius').value)"/>
+						<br>
+						<img id="routeicon" src="NicePng_road-png_196115.png" alt="Route Pic">
+						<br>
+						<label for="destination" class="boldit">Direction to</label>
+						<br>
+						<input type="text" id="destination" name="destination">
+						<br>
+						<label for="destination" class="boldit">by</label>
+						<br><br>
+						<input type="radio" id="walk" name="mode" value="WALKING" checked>
+						<label for="walk">Walk</label>
+						<input type="radio" id="drive" name="mode" value="DRIVING">
+						<label for="drive">Drive</label>
+						<input type="radio" id="transit" name="mode" value="TRANSIT">
+						<label for="transit">Transit</label>
+						<br><br>
+						<input type="button" value="Go"  onclick="calcRoute()"/>
+			</div>
+		</div>
+	</body>
+</html>

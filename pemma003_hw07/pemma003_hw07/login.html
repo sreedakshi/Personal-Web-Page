@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-
+			BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			crossorigin="anonymous">
+		</script>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+	     	<div class="container-fluid">
+	        <ul class="nav navbar-nav">
+	          <li><a href="#" onclick="location.href = '/'"><b>Home</b></a></li>
+	          <li><a href="#" onclick="location.href = '/public/contacts'"><b>Contacts</b></a></li>
+	          <li><a href="#" onclick="location.href = '/public/stock'"><b>Stock Page</b></a></li>
+	          <li><a href="#" onclick="location.href = '/api/logout'"><b>Logout</b></a></li>
+	        </ul>
+	    	</div>
+	  	</nav>
+		<form id="myForm" name="myForm">
+			<div>
+				<label for="login">login:</label>
+				<input type="text" id="login" name="login" required>
+			</div>
+			<div>
+				<label for="password">password:</label>
+				<input type="text" id="password" name="password" required>
+			</div>
+			<div>
+				<span id="alertbox" style="visibility: hidden;">Login failed</span>
+			</div>	
+			<input type="submit" value="Submit!">
+		</form>
+		<script>
+			$(document).ready(function () {
+				$('#myForm').submit(function (event) {
+					event.preventDefault();
+					//collect the form data using Id Selector for whatever data you need
+					//to send to server
+					let logind = $('#login').val();
+					let passwordd = $('#password').val();
+					$.post('/api/check1',
+					{"login":logind,"password":passwordd},
+					function(data){
+						console.log(data);
+						if(data.status==='success'){
+						//pseudocode
+						document.getElementById("alertbox").style.visibility = "hidden";
+						//Re-directtocontactspage,
+						window.location.href='contacts';
+					}
+					else {
+						//Displayerrormessage
+						document.getElementById("alertbox").style.visibility = "visible";
+					}
+				});
+				});
+			});
+		</script>
+	</body>
+</html>

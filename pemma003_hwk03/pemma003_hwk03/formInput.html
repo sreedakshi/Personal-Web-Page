@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Form Input</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="navbar">
+			<table>
+				<tr>
+					<td><p><a href="myContacts.html">My Contacts</a></p></td>
+				</tr>
+				<tr>
+					<td><p><a href="formInput.html">Form Input</a></p></td>
+				</tr>
+				<tr>
+					<td><p><a href="myWidgets.html">My Widgets</a></p></td>
+				</tr>
+			</table>
+		</div>
+		<form name = "formInput" action="http://www-users.cselabs.umn.edu/~joh13266/echo.php" onsubmit = "return formvalidate()" method = "post">
+			<table id="formTable">
+				<tr>
+					<td><label>Name</label></td>
+					<td><input type = "text" pattern="[0-9a-zA-Z\s]+" title="Contact's name must be alphanumeric" name = "name" required ></td>
+				</tr>
+				<tr>
+					<td><label>Category</label></td>
+					<td><select name="category">
+							<option value="personal">Personal</option>
+							<option value="academic">Academic</option>
+							<option value="industry">Industry</option>
+						</select></td>
+				</tr>
+				<tr>
+					<td><label>Location</label></td>
+					<td><input id="addressTextField" type="text" size="50" required></td>
+				</tr>
+				<tr>
+					<td><label>Contact Information</label></td>
+					<td><input type = "text" name = "contact" required></td>
+				</tr>
+				<tr>
+					<td><label>Email</label></td>
+					<td><input type = "email" name = "email" required></td>
+				</tr>
+				<tr>
+					<td><label>Website</label></td>
+					<td><input type = "url" name = "website" required></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="submit" type = "submit" value="Submit"/></td>
+				</tr>
+			</table>
+
+			<div id = "formMap">
+				<iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ_8cK92kts1IReJnfUqEXEuM&key=AIzaSyA4YZWe1IJEVYB8Xz6aZct-HnCcuhaHXi4"></iframe>
+			</div>
+		</form>
+	</body>
+</html>

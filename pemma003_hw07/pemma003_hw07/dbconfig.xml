@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbconfig>
+  <host>cse-mysql-classes-01.cse.umn.edu</host>
+  <user>C4131S21U143</user>
+  <password>20479</password>
+  <database>C4131S21U143</database>
+  <port>3306</port>
+</dbconfig>
+

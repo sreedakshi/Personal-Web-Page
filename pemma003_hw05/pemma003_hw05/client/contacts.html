@@ -1,0 +1,91 @@
+﻿<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html"><b>Home</b></a></li>
+          <li><a href="contacts.html"><b>Contacts</b></a></li>
+          <li><a href="addContact.html"><b>Add Contact</b></a></li>
+          <li><a href="stock.html"><b>Stock Page</b></a></li>
+        </ul>
+      </div>
+    </nav>
+    <br><br>
+
+    <div class="container">
+      <table class="table" id="contactsTable">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Location</th>
+            <th scope="col">Contact Information</th>
+            <th scope="col">Email</th>
+            <th scope="col">Website <br> (URL) </th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script type="text/javascript">
+     /* TODO Fill this script in with a request to your server to GET contacts.json
+     /  and display it in the contactsTable.
+     /*/
+      function processContactsJson(){
+        var xmlhttp = new XMLHttpRequest();
+        var url = "/contacts.json";  // set the url to whatever you name the endpoint (route) in
+                               // createServer.js
+         
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var obj = JSON.parse(xmlhttp.responseText);
+            var contactArray = obj.res.contacts;
+            createNdisplaycontacts(contactArray);
+          }
+        }
+
+        xmlhttp.open("GET",url,true);
+        //replace the url with the third party url (starts with http://) for alpha vantage
+        //assume u get response 200 and continue
+        xmlhttp.send();
+      }
+
+      // This function loops through the array and builds a big string 
+      // embedding the information in the contacts array into rows in a table using
+      // the html tr and td, and then appends the string to the table body
+      function createNdisplaycontacts(cArray) {
+        console.log(cArray);
+        // Outline
+        // initialize string you will append to the table body
+        var outstring = '';
+        // loop through string
+        console.log(cArray.length);
+        for (var rowindex=0; rowindex<cArray.length; rowindex++) {
+          console.log(cArray.length);
+          outstring = "<td>" + cArray[rowindex].name + "</td>" + "<td>" + cArray[rowindex].category + "</td>" + 
+          "<td>" + cArray[rowindex].location + "</td>" + "<td>" + cArray[rowindex].contact + "</td>" + "<td>" + cArray[rowindex].email + "</td>"
+          + "<td>" + "<a href=" + cArray[rowindex].website_url + ">" + cArray[rowindex].website_name + "</a>" + "</td>"     // add <td> tags and <a href> tag for website 
+          var row = document.getElementsByTagName("tbody")[0].insertRow(-1);  //add to the row of the table instead of replacing HTML
+          row.innerHTML = outstring;
+          console.log(outstring);
+        //   table row with data elements from JSON array
+        //       embedded with table data elements. The info for
+        //       each element in the row is in cArray[rowindex]
+        } // end loop
+  
+        // append output string to table body
+        // hint, document.getElementsbyTagName to obtain the table body
+        // and then set innerHTML of table body DOM object the output string outstring
+      }
+    
+      window.onload = processContactsJson();
+    </script>
+  </body>
+</html>
